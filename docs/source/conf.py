@@ -14,7 +14,12 @@ release = '1.0.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinxcontrib.confluencebuilder']
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.intersphinx',
+    'sphinxcontrib.confluencebuilder'
+]
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -30,6 +35,9 @@ html_static_path = ['_static']
 # -- Options for autodoc extension -------------------------------------------------
 autodoc_typehints = 'none'
 autodoc_member_order = 'bysource'
+
+# -- Options for intersphinx extension -------------------------------------------------
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 # -- Options for Confluence builder -------------------------------------------------
 confluence_publish = True
