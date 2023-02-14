@@ -2,7 +2,6 @@
 .vscode
 .python-version
 docs/build/**
-!docs/build/.keep
 dist
 docs/source/apidoc/**
 !docs/source/apidoc/.keep
