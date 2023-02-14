@@ -65,7 +65,7 @@ def copy_config_file(root_dir: Path, target_name: str, source_name: str) -> None
     change its file name to the right version.
 
     :param root_dir: Root directory of the project to be scaffolded.
-    :type root_dir: Path
+    :type root_dir: :py:class:`~pathlib.Path`
     :param target_name: Proper name of the file after landing in the root directory.
     :type target_name: str
     :param source_name: File name as the source is stored as a data file in this package.
@@ -85,12 +85,12 @@ def touch_file(
     Create a new empty file.
 
     :param root_dir: Root directory of the project to be scaffolded.
-    :type root_dir: Path
+    :type root_dir: :py:class:`~pathlib.Path`
     :param target_name: Name of the empty file to be created.
     :type target_name: str
     :param target_dir: Target directory for the new file, defaults to None, which places the file
        in the root directory.
-    :type target_dir: Optional[Path], optional
+    :type target_dir: :py:class:`~pathlib.Path`, optional
     """
     if isinstance(target_dir, Path):
         target_path = target_dir.joinpath(target_name)
