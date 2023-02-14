@@ -1,0 +1,12 @@
+.venv
+.vscode
+.python-version
+docs/build/**
+!docs/build/.keep
+dist
+docs/source/apidoc/**
+!docs/source/apidoc/.keep
+.DS_Store
+poetry.toml
+__pycache__
+*.egg-info
