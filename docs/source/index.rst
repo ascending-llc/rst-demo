@@ -26,6 +26,33 @@ For demonstration purpose, we use :abbr:`rst (reStructuredText)` to document an 
 `public project <https://github.com/xueke477/scaffold>`_ on GitHub. The public project provides a Python package
 and CLI executable named ``scaffold`` that helps its users bootstrap a new Python project in the "src layout".
 
+Hands-on
+--------
+
+To try building the docs by ``Sphinx`` for oneself, use the following steps to set up the necessary local environment.
+
+* Git clone the Ascending-private repo at https://github.com/ascending-llc/rst-demo.
+
+* If ``pyenv`` is used for managing Python versions, do a :code:`pyenv local ***` to pin a Python version >= 3.8
+
+* Run :code:`poetry install` to install dependencies, and :code:`poetry shell` to activate a virtual environment.
+  All subsequent steps are carried out in this virtual environment.
+
+* Run :code:`cd docs` --- all ``Sphinx`` related operations should be done with :file:`docs` as the current working
+  directory.
+
+To actually build the documentations:
+
+* Run :code:`sphinx-apidoc -o ./source/apidoc ../src/scaffold` to generate API documentations and place them in the
+  :file:`docs/source/apidoc` folder.
+
+* Run :code:`make clean && make html` to generate static ``HTML`` pages. Then open :file:`docs/build/html/index.html`
+  with a browser to view them.
+
+* To publish to Confluence, edit :file:`docs/source/conf.py` according to the
+  `Atlassian Confluence Builder <https://sphinxcontrib-confluencebuilder.readthedocs.io/en/stable/configuration/>`_
+  documentation, and then run :code:`make clean && make confluence`.
+
 .. toctree::
    :maxdepth: 2
    :caption: Demo Project
