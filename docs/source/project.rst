@@ -1,4 +1,4 @@
-Scaffold
+Scaffold Project
 ********************
 
 Project Layout
@@ -32,37 +32,37 @@ After scaffolding, the project folder has the following structure::
 
 Below are descriptions of the folders and files created:
 
-   * ``adhoc`` is for experimental code during development.
+* ``adhoc`` is for experimental code during development.
 
-   * ``main`` mimics the working folder of the _user_ of the distribution package.
+* ``main`` mimics the working folder of the _user_ of the distribution package.
 
-   * ``tests`` is for unit tests.
+* ``tests`` is for unit tests.
 
-   * ``src`` contains all import packages of the distribution package. Each import package
-     should be a valid Python identifier. Change ``example_package`` to the appropriate name.
+* ``src`` contains all import packages of the distribution package. Each import package
+  should be a valid Python identifier. Change ``example_package`` to the appropriate name.
 
-   * ``.flake8``, ``mypy.ini``, ``pytest.ini``, ``requirements-dev.txt`` are configuration files
-     with some sample settings.
+* ``.flake8``, ``mypy.ini``, ``pytest.ini``, ``requirements-dev.txt`` are configuration files
+  with some sample settings.
 
-   * ``pyproject.toml`` is a PEP-518 compliant build system dependency file.
+* ``pyproject.toml`` is a PEP-518 compliant build system dependency file.
 
-   * ``setup.cfg`` contain the specifications of the build process. **Its contents need manual**
-     **editing to suit the particular project being developed**.
+* ``setup.cfg`` contain the specifications of the build process. **Its contents need manual**
+  **editing to suit the particular project being developed**.
 
-   * Run ``pip install -e .`` from the project root folder to install the package to the DEV virtual
-     environment in "editable mode". This is essentially a hack that adds the folder ``./src`` to
-     ``sys.path`` without explicitly manipulating ``sys.path`` in any package source code. Thus the
-     package under development can be imported by its name from within any script in the ``./adhoc``,
-     ``./main`` and ``./tests`` folder, allowing convenient testing during development. More importantly,
-     the package is imported by these scripts because it appears to them as a properly installed
-     third-party package, not because it happens to lie in the same folder as the entry-point script.
-     This is an important distinction because we want the import situation in the DEV environment
-     to be as close as possible to that of the actual users of the package. Putting all package
-     source code in a separate ``src`` subfolder is why this code organization strategy is called
-     the "src layout".
+* Run :command:`pip install -e .` from the project root folder to install the package to the DEV virtual
+  environment in "editable mode". This is essentially a hack that adds the folder ``./src`` to
+  ``sys.path`` without explicitly manipulating ``sys.path`` in any package source code. Thus the
+  package under development can be imported by its name from within any script in the ``./adhoc``,
+  ``./main`` and ``./tests`` folder, allowing convenient testing during development. More importantly,
+  the package is imported by these scripts because it appears to them as a properly installed
+  third-party package, not because it happens to lie in the same folder as the entry-point script.
+  This is an important distinction because we want the import situation in the DEV environment
+  to be as close as possible to that of the actual users of the package. Putting all package
+  source code in a separate ``src`` subfolder is why this code organization strategy is called
+  the "src layout".
 
-   * To build the final distribution package, first install the "build front-end" by ``pip install build``.
-     Then run ``python -m build``.
+* To build the final distribution package, first install the "build front-end" by :command:`pip install build`.
+  Then run :command:`python -m build`.
 
 Installation
 ============
@@ -71,7 +71,7 @@ This repo itself uses the same src layout that it scaffolds. It is built into a 
 package encapsulated in the ``dist/scaffold-1.0.1-py3-none-any.whl`` wheel
 file. After installing the distribution package in the *global environment* of a Python
 interpreter, the package places an executable ``scaffold.exe`` in the ``Scripts`` folder of the
-global environment on Windows, or ``scaffold`` in the ``bin`` folder on \*nix. Afterwards, create
+global environment on Windows, or :program:`scaffold` in the ``bin`` folder on \*nix. Afterwards, create
 an alias to the executable and ``scaffold`` is available as a command from CLI.
 
 Install from wheel file
