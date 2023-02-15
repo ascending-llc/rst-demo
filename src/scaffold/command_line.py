@@ -8,6 +8,9 @@ from pathlib import Path
 from shutil import copyfile
 from typing import Optional
 
+# External
+from sceptre.hooks import Hook
+
 
 def main() -> None:
     """
@@ -65,11 +68,8 @@ def copy_config_file(root_dir: Path, target_name: str, source_name: str) -> None
     change its file name to the right version.
 
     :param root_dir: Root directory of the project to be scaffolded.
-    :type root_dir: :py:class:`~pathlib.Path`
     :param target_name: Proper name of the file after landing in the root directory.
-    :type target_name: str
     :param source_name: File name as the source is stored as a data file in this package.
-    :type source_name: str
     """
     file_dir = Path(__file__).parent
     data_dir = file_dir.joinpath('data')
@@ -85,12 +85,9 @@ def touch_file(
     Create a new empty file.
 
     :param root_dir: Root directory of the project to be scaffolded.
-    :type root_dir: :py:class:`~pathlib.Path`
     :param target_name: Name of the empty file to be created.
-    :type target_name: str
     :param target_dir: Target directory for the new file, defaults to None, which places the file
        in the root directory.
-    :type target_dir: :py:class:`~pathlib.Path`, optional
     """
     if isinstance(target_dir, Path):
         target_path = target_dir.joinpath(target_name)
@@ -99,3 +96,36 @@ def touch_file(
     if not target_path.exists():
         with open(target_path, 'w') as _:
             pass
+
+
+
+class CustomException(Exception):
+    """
+    Custom Exception class to be raised in :py:func:`demo_function`.
+    """
+    pass
+
+
+def demo_function(input_str: str, option: int = 1, hook: Optional[Hook] = None) -> str:
+    """
+    This function demonstrates how to use Python type annotations in the function signature
+    to automatically generates *hyperlinked* parameter types via the ``sphinx_autodoc_typehints``
+    extension.
+
+    In this way, there is no need of putting the ``:type:`` role explicitly in the docstring.
+
+    To link to external sites in the hand-written docstring body, use the full ``rst`` markup
+    notation. Such as ``:py:class:`~sceptre.hooks.Hook``` and ``:py:mod:`sceptre```.
+
+    :param input_str: Note that ``str`` links to Python official documentation site.
+    :param option: Keyword parameter, defaults to 1.
+    :param hook: Optional ``Hook`` object, defaults to None. ``Optional`` links to Python official
+       docs; :py:class:`~sceptre.hooks.Hook` links to :py:mod:`sceptre` API docs.
+    :raises CustomException: My custom exception class.
+    :return: Some string.
+    """
+    if isinstance(hook, Hook):
+        print("There is a hook.")
+    if option == 1:
+        raise CustomException()
+    return input_str

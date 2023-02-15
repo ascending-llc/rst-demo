@@ -16,6 +16,7 @@ release = '1.0.0'
 
 extensions = [
     'sphinx.ext.autodoc',
+    "sphinx_autodoc_typehints",
     'sphinx.ext.viewcode',
     'sphinx.ext.intersphinx',
     'sphinxcontrib.confluencebuilder'
@@ -36,8 +37,13 @@ html_static_path = ['_static']
 autodoc_typehints = 'none'
 autodoc_member_order = 'bysource'
 
+# -- Options for sphinx_autodoc_typehints extension -------------------------------------------------
+
 # -- Options for intersphinx extension -------------------------------------------------
-intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None),
+    'sceptre': ('https://docs.sceptre-project.org/4.0.1/', None),
+}
 
 # -- Options for Confluence builder -------------------------------------------------
 confluence_publish = True
