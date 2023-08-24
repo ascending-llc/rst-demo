@@ -24,7 +24,7 @@ slightly more complex than Markdown, to document a Python project. The benefits 
 * There is also the option of building into printable formats such as ``LaTeX`` and ``ePub``.
 
 For demonstration purpose, we use :abbr:`rst (reStructuredText)` to document an existing 
-`public project <https://github.com/xueke477/scaffold>`_ on GitHub. The public project provides a Python package
+`public project <https://github.com/kxue43/scaffold>`_ on GitHub. The public project provides a Python package
 and CLI executable named ``scaffold`` that helps its users bootstrap a new Python project in the "src layout".
 
 Hands-on

@@ -77,44 +77,56 @@ an alias to the executable and ``scaffold`` is available as a command from CLI.
 Install from wheel file
 -----------------------
 
-1.  Download ``dist/scaffold-1.0.1-py3-none-any.whl`` from the `GitHub repo <https://github.com/xueke477/scaffold>`_.
+1.  Download ``dist/scaffold-1.0.1-py3-none-any.whl`` from the `GitHub repo <https://github.com/kxue43/scaffold>`_.
 
 2.  Pip install from the wheel file into the global environment of a Python interpreter
     versioned 3.8 or above.
 
-    On Windows, for example::
+    On Windows, for example:
 
-        py -3.8 -m pip install scaffold-1.0.1-py3-none-any.whl
+    .. code-block:: bash
 
-    On macOS, for example::
+       $ py -3.8 -m pip install scaffold-1.0.1-py3-none-any.whl
 
-        python3 -m pip install scaffold-1.0.1-py3-none-any.whl
+    On macOS, for example:
+
+    .. code-block:: bash
+
+       $ python3 -m pip install scaffold-1.0.1-py3-none-any.whl
 
 3.  Create alias.
 
-    With PowerShell, put the following in the start-up script::
+    With PowerShell, put the following in the start-up script:
 
-        Set-Alias -Name scaffold -Value C:\Users\{your_name}\AppData\Local\Programs\Python\Python38\Scripts\scaffold.exe
+    .. code-block:: bash
 
-    With zsh on macOS, put the following in ``.zshrc``::
+       $ Set-Alias -Name scaffold -Value C:\Users\{your_name}\AppData\Local\Programs\Python\Python38\Scripts\scaffold.exe
 
-        alias scaffold="/Users/{your_name}/Library/Python/3.8/bin/scaffold"
+    With zsh on macOS, put the following in ``.zshrc``:
+
+    .. code-block::
+
+       alias scaffold="/Users/{your_name}/Library/Python/3.8/bin/scaffold"
 
 Build wheel from source
 -----------------------
 
 Alternatively, the wheel file can be built from source by the user.
-After cloning the `repo <https://github.com/xueke477/scaffold>`_, delete the old wheel file and run the following
-commands in a virtual environment specifically created for this repo::
+After cloning the `repo <https://github.com/kxue43/scaffold>`_, delete the old wheel file and run the following
+commands in a virtual environment specifically created for this repo:
 
-  pip install requirements-dev.txt
-  python -m build
+.. code-block:: bash
+
+   $ pip install requirements-dev.txt
+   $ python -m build
 
 The rest of the installation steps are the same.
 
 pip install from GitHub
 -----------------------
 
-Finally, the package can be installed directly from GitHub::
+Finally, the package can be installed directly from GitHub:
 
-  pip install git+https://github.com/xueke477/scaffold.git@master
+.. code-block:: bash
+
+   $ pip install git+https://github.com/kxue43/scaffold.git@master
