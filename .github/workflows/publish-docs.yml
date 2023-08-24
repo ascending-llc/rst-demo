@@ -1,0 +1,44 @@
+name: Publish Documentation
+on:
+  push:
+    branches: ["main"]
+    paths: ["docs/**"]
+  workflow_dispatch:
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "documentation"
+  cancel-in-progress: false
+jobs:
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
+      - name: Set up Python
+        uses: actions/setup-python@13ae5bb136fac2878aff31522b9efb785519f984
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install -r docs/requirements.txt
+      - name: Make HTML
+        run: >
+          cd ${{ github.workspace }} && pushd docs &&
+          sphinx-apidoc -o ./source/apidoc ../src/scaffold &&
+          make clean && make html &&
+          popd
+      - name: Setup Pages
+        uses: actions/configure-pages@f156874f8191504dae5b037505266ed5dda6c382
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@a753861a5debcf57bf8b404356158c8e1e33150c
+        with:
+          path: 'docs/build/html'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@9dbe3824824f8a1377b8e298bafde1a50ede43e5
