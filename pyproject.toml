@@ -9,19 +9,24 @@ packages = [
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 
 [tool.poetry.group.required]
 optional = false
 
 [tool.poetry.group.required.dependencies]
 build = "^0.10.0"
+sceptre = "*"
+pyyaml = "^6.0.1"
+
+[tool.poetry.group.docs]
+optional = false
+
+[tool.poetry.group.docs.dependencies]
 sphinx = "^6.1.3"
 sphinx-rtd-theme = "^1.2.0"
 sphinxcontrib-confluencebuilder = "^2.0.0"
 sphinx-autodoc-typehints = "^1.22"
-sceptre = "*"
-pyyaml = "^6.0.1"
 sphinx-copybutton = "*"
 
 [build-system]
