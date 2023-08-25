@@ -7,6 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 from importlib import import_module
 from inspect import getsourcelines
+from pathlib import Path
 
 project = "reStructuredText Demo"
 copyright = "2023, Ke Xue"
@@ -66,13 +67,16 @@ copybutton_here_doc_delimiter = "EOF"
 
 # -- Options for sphinx.ext.linkcode -------------------------------------------------
 def linkcode_resolve(domain, info):
+    file_dir = Path(__file__).parent
+    src_dir = file_dir.parent.joinpath("src")
     if domain != "py":
         return None
     if not info["module"]:
         return None
     filename = info["module"].replace(".", "/")
-    if not filename.startswith("tests"):
-        filename = "src/" + filename
+    if src_dir.joinpath(filename).is_dir():
+        filename = f"{filename}/__init__"
+    filename = "src/" + filename
     if "fullname" in info:
         module = import_module(info["module"])
         obj = getattr(module, info["fullname"])
