@@ -73,16 +73,15 @@ def linkcode_resolve(domain, info):
         return None
     if not info["module"]:
         return None
+    if "." in info["fullname"]:
+        return None
     filename = info["module"].replace(".", "/")
     if src_dir.joinpath(filename).is_dir():
         filename = f"{filename}/__init__"
-    filename = "src/" + filename
-    if "fullname" in info:
-        module = import_module(info["module"])
-        obj = getattr(module, info["fullname"])
-        anchor = f"#L{getsourcelines(obj)[1]}"
-    else:
-        anchor = ""
+    filename = f"src/{filename}"
+    module = import_module(info["module"])
+    obj = getattr(module, info["fullname"])
+    anchor = f"#L{getsourcelines(obj)[1]}"
 
     result = (
         f"https://github.com/ascending-llc/rst-demo/blob/master/{filename}.py{anchor}"
